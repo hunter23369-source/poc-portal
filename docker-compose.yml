@@ -1,0 +1,38 @@
+services:
+  db:
+    image: postgres:16
+    container_name: poc-db
+    environment:
+      POSTGRES_DB: poc
+      POSTGRES_USER: pocuser
+      POSTGRES_PASSWORD: mv
+    volumes:
+      - /mnt/pocdata/postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+  adminer:
+    image: adminer:latest
+    container_name: poc-adminer
+    ports:
+      - "8081:8080"
+    restart: unless-stopped
+
+  portal:
+    build: ./portal
+    container_name: poc-portal
+    environment:
+      PORTAL_DB: "Host=db;Port=5432;Database=poc;Username=pocuser;Password=mv"
+      PORTAL_AUTH_KEY: "cX9!pQ3vK8zR2#dA7mN1hJ5sL0@wY6uE4tB9^gFI"
+      PORTAL_SETUP_ENABLED: "true"
+      PORTAL_SETUP_TOKEN: "4321"
+      PORTAL_UPLOAD_DIR: "/data/uploads"
+    volumes:
+      - ./portal/wwwroot:/app/wwwroot
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    depends_on:
+      - db
+

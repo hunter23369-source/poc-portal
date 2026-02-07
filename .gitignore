@@ -1,0 +1,15 @@
+# .NET
+bin/
+obj/
+
+# Environment
+.env
+
+# Backups
+backups/
+
+# Uploads
+portal/uploads/
+
+# OS
+.DS_Store
