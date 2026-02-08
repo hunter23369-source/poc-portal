@@ -65,7 +65,7 @@ app.MapGet("/", (HttpContext ctx) =>
     <div class='mv-footer'>
       <div style='margin-bottom:8px; font-weight:800; color: rgba(255,255,255,0.0)'></div>
       <div class='grid grid-3'>
-        <a href='https://microvote.com' target='_blank'>Link 1</a>
+        <a href='https://microvote.com' target='_blank'>Link for white board</a>
         <a href='https://microvote.com' target='_blank'>Link 2</a>
         <a href='https://microvote.com' target='_blank'>Link 3</a>
         <a href='https://microvote.com' target='_blank'>Link 4</a>
